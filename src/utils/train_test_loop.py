@@ -1,9 +1,9 @@
 import argparse
 
-import tools.model as BERT
-import tools.statistics as statistics
-import tools.CustomDataLoader as CustomDataLoader
-import tools.GlobalParameters as GlobalParameters
+import utils.model as BERT
+import utils.statistics as statistics
+import utils.CustomDataLoader as CustomDataLoader
+import utils.GlobalParameters as GlobalParameters
 
 import torch
 import torch.nn as nn
@@ -124,7 +124,10 @@ def loop(data, len_data, function, file_name, opt, model, loss_func, training):
             pbar.n = i*GlobalParameters.batch_size
             pbar.refresh()
 
-    return torch.tensor(last_expected).flatten(), torch.tensor(last_out).flatten(), total_loss.item(), count
+    if type(total_loss) == int:
+        return torch.tensor(last_expected).flatten(), torch.tensor(last_out).flatten(), total_loss, count
+    else:
+        return torch.tensor(last_expected).flatten(), torch.tensor(last_out).flatten(), total_loss.item(), count
             
 ##################
 ## Main Program ##

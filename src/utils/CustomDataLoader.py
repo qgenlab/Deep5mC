@@ -85,4 +85,4 @@ def getDataLoader(data_file, training):
     
     data = MethylationDataset(data_file, training=training) 
 
-    return DataLoader(data, batch_size=GlobalParameters.batch_size, shuffle=True, drop_last=True), len(data)
+    return DataLoader(data, batch_size=GlobalParameters.batch_size, shuffle=True, drop_last=False), len(data)

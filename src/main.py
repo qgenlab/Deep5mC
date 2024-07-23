@@ -3,7 +3,7 @@ import contextlib
 import os, sys
 
 import torch
-from tools import GlobalParameters, train_test_loop
+from utils import GlobalParameters, train_test_loop
 
 if __name__ == '__main__':
         

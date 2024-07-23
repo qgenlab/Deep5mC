@@ -3,8 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import math
 
-import numpy as np
-
 from . import GlobalParameters
 from . import CustomDataLoader
 
@@ -23,11 +21,12 @@ class BERT(nn.Module):
         ## Embeddings
         
         # Position embedding
-        self.linear = nn.Linear(len(CustomDataLoader.token_dict), GlobalParameters.d_model) # nn.Linear(4, d_model)
-        self.pos_embed = Attention(GlobalParameters.d_model, GlobalParameters.nhead, max_len=self.seq_length, dropout=GlobalParameters.dropout)
+        self.linear = nn.Linear(len(CustomDataLoader.token_dict), GlobalParameters.d_model) 
+        self.pos_embed = RelativeGlobalAttention(GlobalParameters.d_model, GlobalParameters.nhead, max_len=self.seq_length, dropout=GlobalParameters.dropout)
         
         # Token embedding
-        self.cnn = torch.nn.Conv2d(1, GlobalParameters.d_model, ( 1, GlobalParameters.d_model),  bias=False)
+        
+        self.cnn = torch.nn.Conv2d(1, GlobalParameters.d_model, ( 3, GlobalParameters.d_model),  bias=False, padding=(1,0))
         
         # Normalize
         self.normalize = nn.LayerNorm(GlobalParameters.d_model, dtype=torch.float32)
@@ -47,11 +46,7 @@ class BERT(nn.Module):
         pos_emb = self.dropout(self.linear(x))
         # pos_emb = self.embedding(torch.argmax(x, dim=2))
 
-        pos_emb, attn = self.pos_embed(pos_emb)
-
-        
-        np.save(f'{GlobalParameters.output_directory}/x.npy', x.cpu().detach().numpy())
-        np.save(f'{GlobalParameters.output_directory}/temp.npy', attn.cpu().detach().numpy())
+        pos_emb = self.pos_embed(pos_emb)
         
         token_emb = self.dropout(self.cnn(pos_emb.unsqueeze(1)).squeeze())
         
@@ -99,8 +94,8 @@ class RelativeGlobalAttention(nn.Module):
         QK_t = torch.matmul(q, k_t)
         attn = (QK_t + Srel) / math.sqrt(q.size(-1))
         mask = self.mask[:, :, :seq_len, :seq_len]
-        self.attn = attn.masked_fill(mask == 0, float("-inf"))
-        attn = F.softmax(self.attn, dim=-1)
+        attn = attn.masked_fill(mask == 0, float("-inf"))
+        attn = F.softmax(attn, dim=-1)
         out = torch.matmul(attn, v)
         out = out.transpose(1, 2)
         out = out.reshape(batch_size, seq_len, -1)
@@ -111,9 +106,3 @@ class RelativeGlobalAttention(nn.Module):
         reshaped = padded.reshape(batch_size, num_heads, num_cols, num_rows)
         Srel = reshaped[:, :, 1:, :]
         return Srel      
-
-class Attention(RelativeGlobalAttention):
-    def forward(self, x):
-        result = super().forward(x)
-        return result, self.attn
-        
