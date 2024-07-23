@@ -8,7 +8,7 @@ conda env create -f environment.yml
 conda activate Deep5mC
 ```
 
-## Data Set Availabiltiy
+## Data Set Availability
 
 There is a [dataset](https://www.bcgsc.ca/downloads/111_reference_epigenomes/112epigenomes/5mC/SBS_Removed_E027_E064_Fixed_E012/) that can be downloaded through `doc/download.sh`, which contains 5mC methylation percentages, hg19 locations, and read coverage information. </br>
 </br>
@@ -21,7 +21,7 @@ All input is in the following `.fasta` format:
 > Percentage
 2561bp Sequence
 ```
-An short example file can be seen in `test_input.fasta`.
+A short example file can be seen in `test_input.fasta`.
 
 ## Basic Usage
 
@@ -30,7 +30,7 @@ python src/main.py [train | test] \
     <input files> \
     <output directory> \
     --model <optional pretrained model> \
-    -d <optional gpu device> \
+    -d <optional gpu device>
 ```
 
 ### Example
@@ -42,7 +42,7 @@ python src/main.py test \
     -d 7
 ```
 
-After running, the `output_dir/` will hold the expected values, predicted values, and some statistical measures to evaluate the performance of the model. </br>
+After running, the `output_dir/` will hold the expected values, predicted values, and some statistical measures to evaluate the model's performance. </br>
 </br>
 More command line options can be seen in `src/README.md` or by running the help command:
 ```
