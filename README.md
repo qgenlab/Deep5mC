@@ -23,28 +23,11 @@ All input is in the following `.fasta` format:
 ```
 An short example file can be seen in `test_input.fasta`.
 
-## Basic Usage
+## Example Usage
 
-```
-python src/main.py [train | test] \
-    <input files> \
-    <output directory> \
-    --model <optional pretrained model> \
-    -d <optional gpu device> \
-```
+Look at `Example.ipynb` for examples of using Deep5mC. </br>
 
-### Example
-```
-python src/main.py test \
-    input1.fasta input2.fasta input3.fasta \
-    output_dir/ \
-    --model pretrained_model.pt \
-    -d 7
-```
-
-After running, the `output_dir/` will hold the expected values, predicted values, and some statistical measures to evaluate the performance of the model. </br>
-</br>
-More command line options can be seen in `src/README.md` or by running the help command:
+All command options can be seen in `src/README.md` or by running the help command:
 ```
 python src/main.py [train | test] -h
 ```
