@@ -15,7 +15,7 @@ All input is in the following `.fasta` format:
 > Percentage
 2561bp Sequence
 ```
-A short example file can be seen in `test_input.fasta`.
+A short example file can be seen in `doc/test_input.fasta`.
 
 ## Example Usage
 
