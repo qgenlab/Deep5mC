@@ -25,7 +25,7 @@ A short example file can be seen in `test_input.fasta`.
 
 ## Example Usage
 
-Look at `Example.ipynb` for examples of using Deep5mC. </br>
+Look at `doc/Example.ipynb` for examples of using Deep5mC. </br>
 
 All command options can be seen in `src/README.md` or by running the help command:
 ```
