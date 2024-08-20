@@ -1,6 +1,6 @@
 # Deep5mC
 
-Deep5mC is a high-performing and advanced deep learning model designed to predict the probability of 5mC methylation within a given DNA sequence. The model's architecture includes CNNs, transformer layers, and relative position embedding, which allows Deep5mC to have a great contextual understanding of the given DNA sequence. 
+Deep5mC is a high-performing and advanced deep learning model designed to predict the probability of 5mC methylation within a given DNA sequence. Deep5mC uses CNNs and transformer layers to have a contextual understanding of the given DNA sequence. The input is 2561bp sequences. The output is a methylation percentage for the central position of the input sequence.
 
 ## Installation
 
