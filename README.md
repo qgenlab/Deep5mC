@@ -1,5 +1,7 @@
 # Deep5mC
 
+Deep5mC is a high-performing and advanced deep learning model designed to predict the probability of 5mC methylation within a given DNA sequence. The model's architecture includes CNNs, transformer layers, and relative position embedding, which allows Deep5mC to have a great contextual understanding of the given DNA sequence. 
+
 ## Installation
 
 Install the `conda` environment using the `environment.yml` file:
