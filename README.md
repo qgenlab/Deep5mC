@@ -1,4 +1,4 @@
-# Deep5mC
+# Deep5mC: Predicting 5-methylcytosine (5mC) Methylation Status by a Deep Learning Transformer Approach
 
 Deep5mC is a high-performing and advanced deep learning model designed to predict the probability of 5mC methylation within a given DNA sequence. Deep5mC uses CNNs and transformer layers to have a contextual understanding of the given DNA sequence. The input is 2561bp sequences. The output is a methylation percentage for the central position of the input sequence.
 
@@ -28,6 +28,16 @@ All command options can be seen in `src/README.md` or by running the help comman
 python src/main.py [train | test] -h
 ```
 
+## Dataset
+
+The dataset can be installed and preprocessed using
+
+```
+src/preprocessing.sh THREADS
+```
+
+- Threads is an optional integer argument
+- The results will be stored in `.fasta` files located at `src/data/chr*.fasta`
 
 ## Pretrained Model Availability
 
