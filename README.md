@@ -33,11 +33,12 @@ python src/main.py [train | test] -h
 The dataset can be installed and preprocessed using
 
 ```
-src/preprocessing.sh THREADS
+src/preprocessing.sh [REFERENCE_GENOME] [THREADS]
 ```
 
-- Threads is an optional integer argument
-- The results will be stored in `.fasta` files located at `src/data/chr*.fasta`
+- The reference genome argument is a path to the hg-19 reference genome and is required.
+- Threads is an optional integer argument.
+- The results will be stored in `.fasta` files located at `src/data/chr*.fasta`.
 
 ## Pretrained Model Availability
 
