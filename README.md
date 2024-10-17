@@ -4,11 +4,26 @@ Deep5mC is a high-performing and advanced deep learning model designed to predic
 
 ## Installation
 
+### Conda Environment 
+
 Install the `conda` environment using the `environment.yml` file:
 ```
 conda env create -f environment.yml
 conda activate Deep5mC
 ```
+
+### Dataset
+
+The dataset can be installed and preprocessed using
+
+```
+src/preprocessing.sh [REFERENCE_GENOME] [THREADS]
+```
+
+- The reference genome argument is a path to the hg-19 reference genome and is required.
+- Threads is an optional integer argument.
+- The results will be stored in `.fasta` files located at `src/data/chr*.fasta`.
+
 
 ## Input File Example
 
@@ -27,18 +42,6 @@ All command options can be seen in `src/README.md` or by running the help comman
 ```
 python src/main.py [train | test] -h
 ```
-
-## Dataset
-
-The dataset can be installed and preprocessed using
-
-```
-src/preprocessing.sh [REFERENCE_GENOME] [THREADS]
-```
-
-- The reference genome argument is a path to the hg-19 reference genome and is required.
-- Threads is an optional integer argument.
-- The results will be stored in `.fasta` files located at `src/data/chr*.fasta`.
 
 ## Pretrained Model Availability
 
