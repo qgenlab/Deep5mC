@@ -24,8 +24,28 @@ src/preprocessing.sh [REFERENCE_GENOME] [THREADS]
 - Threads is an optional integer argument.
 - The results will be stored in `.fasta` files located at `src/data/chr*.fasta`.
 
+## Example Usage
 
-## Input File Example
+Look at `doc/Example.ipynb` for examples of using Deep5mC. </br>
+
+All command options can be seen in `src/README.md`.
+
+### Test Command Example
+```
+python src/main.py test \
+    test_input.fasta \ # Input file(s)
+    output/ \ # Output directory
+    --model pretrained_model.pt \ # Model file path
+```
+### Train Command Example
+```
+python src/main.py train \
+    test_input.fasta \ # Input file(s)
+    output/ \ # Output directory
+```
+
+
+## Input File Format
 
 All input is in the following `.fasta` format:
 ```
@@ -33,15 +53,6 @@ All input is in the following `.fasta` format:
 2561bp Sequence
 ```
 A short example file can be seen in `doc/test_input.fasta`.
-
-## Example Usage
-
-Look at `doc/Example.ipynb` for examples of using Deep5mC. </br>
-
-All command options can be seen in `src/README.md` or by running the help command:
-```
-python src/main.py [train | test] -h
-```
 
 ## Pretrained Model Availability
 
