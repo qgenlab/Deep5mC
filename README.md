@@ -2,6 +2,8 @@
 
 Deep5mC is a high-performing and advanced deep learning model designed to predict the probability of 5mC methylation within a given DNA sequence. Deep5mC uses CNNs and transformer layers to have a contextual understanding of the given DNA sequence. The input is 2561bp sequences. The output is a methylation percentage for the central position of the input sequence.
 
+To run Deep5mC and/or reproduce the results presented in the Deep5mC paper, users need to install necessary packages per the installation instructions below. Also, training or using Deep5mC needs GPU with >24GB memory. We recommend to use A100 80GB or better GPU with minimize the training and testing time. 
+
 ## Installation
 
 ### Conda Environment 
